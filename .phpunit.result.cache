@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Warning":6,"App\\Tests\\ContactTest::testInvalidEmail":4,"App\\Tests\\ContactTest::testNotBlankEmail":4},"times":{"Warning":0.014,"App\\Tests\\ContactTest::testInvalidEmail":13.942,"App\\Tests\\ContactTest::testNotBlankEmail":0.272,"App\\Tests\\ContactTest::testInvalidForm":0.584}}
