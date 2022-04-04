@@ -70,7 +70,7 @@ class ContactTest extends PantherTestCase
     }
 
     /**
-     * Test email not blank
+     * Test content not blank
      *
      * @return void
      */
@@ -91,7 +91,7 @@ class ContactTest extends PantherTestCase
     }
 
     /**
-     * Test email not blank
+     * Test valid form
      *
      * @return void
      */

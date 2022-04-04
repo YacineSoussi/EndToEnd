@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BlogRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BlogRepository::class)]
 class Blog
@@ -14,9 +15,15 @@ class Blog
     private $id;
 
     #[ORM\Column(type: 'string', length: 100)]
+    #[Assert\NotBlank(message: "Saisissez un titre")]
     private $title;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\NotBlank(message: "Saisissez un contenu")]
+    #[Assert\Length(
+              min : 5,
+              minMessage : "Votre contenu doit faire minimum 5 caracteres",
+         )]
     private $content;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
