@@ -5,9 +5,15 @@
 {% block body %}
     <h1>Edit Blog</h1>
 
-    {{ include('blog/_form.html.twig', {'button_label': 'Update'}) }}
+    {% for message in app.flashes('success') %}
+							<div class="alert alert-success" role="alert">
+							{{ message}}
+							</div>
+							{% endfor %}
+
+    {{ include('blog/_form.html.twig', {'button_label': 'Update', 'id': 'formulaire'}) }}
 
     <a href="{{ path('app_blog_index') }}">back to list</a>
 
-    {{ include('blog/_delete_form.html.twig') }}
+    {# {{ include('blog/_delete_form.html.twig') }} #}
 {% endblock %}

@@ -16,6 +16,7 @@ class Blog
 
     #[ORM\Column(type: 'string', length: 100)]
     #[Assert\NotBlank(message: "Saisissez un titre")]
+    #[Assert\Type(type: "string", message: "Veuillez saisir du text")]
     private $title;
 
     #[ORM\Column(type: 'text')]

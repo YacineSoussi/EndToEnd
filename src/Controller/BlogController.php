@@ -30,6 +30,11 @@ class BlogController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $blogRepository->add($blog);
+
+            $this->addFlash(
+               'success',
+               'Blog ajouté avec succes !'
+            );
             return $this->redirectToRoute('app_blog_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -55,6 +60,10 @@ class BlogController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $blogRepository->add($blog);
+            $this->addFlash(
+               'success',
+               'Blog modifié avec succes !'
+            );
             return $this->redirectToRoute('app_blog_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,6 +78,11 @@ class BlogController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$blog->getId(), $request->request->get('_token'))) {
             $blogRepository->remove($blog);
+
+            $this->addFlash(
+               'success',
+               'Le blog a bien été supprimé !'
+            );
         }
 
         return $this->redirectToRoute('app_blog_index', [], Response::HTTP_SEE_OTHER);

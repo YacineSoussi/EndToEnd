@@ -28,6 +28,23 @@ class RegisterTest extends PantherTestCase
         $this->assertSelectorTextContains('.invalid-feedback', 'Please enter a mail');
     }
 
+    public function testInvalidEmail()
+    {
+        $client = static::createPantherClient();
+
+        $crawler = $client->request('GET', '/register');
+        $form = $crawler->selectButton('Register')->form([
+            'registration_form[email]' => 'Yacine',
+            'registration_form[plainPassword]' => 'Mon sujet',
+        ]);
+        $client->getWebDriver()->findElement(WebDriverBy::name('registration_form[agreeTerms]'))->click();
+        $client->submit($form);
+
+        // On vérifie qu'on retrouve bien la classe d'erreurs au moment de la soumission
+        $this->assertSelectorTextContains('.invalid-feedback', 'Veuillez saisir un email correct.');
+        
+    }
+
     /**
      * Test Conidtion not checked
      *
