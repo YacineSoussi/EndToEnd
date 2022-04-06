@@ -69,6 +69,35 @@ class BlogTest extends PantherTestCase
 
                                   /**      EDIT        */
 
+/**
+     * Permet de trouver le bouton de suppression
+     *
+     * @return void
+     */
+    public function testSameDataFormEdit()
+    {
+        $client = static::createPantherClient();
+        $client->request('GET', '/blog');
+        $client->executeScript("document.getElementById('edit').click()");
+        $client->executeScript("document.querySelector('button').click()");
+        
+        $this->assertSelectorTextContains('.alert-success', 'Blog modifié avec succes !');
+    }
+
+    // public function testEditLengthContent()
+    // {
+    //     $client = static::createPantherClient();
+
+    //     $crawler = $client->request('GET', '/blog');
+    //     $client->getWebDriver()->findElement(WebDriverBy::id('edit'))->click();
+
+    //     $client->submitForm('submit', [
+    //         'title' => 'Yacine',
+    //         'content' => 'z'
+    //     ]);
+
+    //     $this->assertSelectorTextContains('.invalid-feedback', 'Votre contenu doit faire minimum 5 caracters');
+    // }
 //  /**
 //      * Test Email invalid
 //      *
