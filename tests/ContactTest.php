@@ -17,8 +17,9 @@ class ContactTest extends PantherTestCase
         $client = static::createPantherClient();
 
         $crawler = $client->request('GET', '/contact');
+
         $form = $crawler->selectButton('Submit')->form([
-            'contact[email]' => 'Yacine',
+            'contact[email]' => 'Yacine@gmail.com',
             'contact[subject]' => 'Mon sujet',
             'contact[content]' => 'Voici ma demande très spéciale.'
         ]);
